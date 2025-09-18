@@ -32,7 +32,7 @@ function checkRole(role) {
   };
 }
 
-// ------------------ ROUTE-URI ------------------
+// ROUTE-URI
 
 // Nivel 5: GET /products/list
 app.get("/products/list", (req, res) => {
@@ -44,7 +44,7 @@ app.get("/products/details/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const product = products.find(p => p.id === id);
   if (!product) {
-    return res.status(404).json({ message: "Produsul nu există" });
+    return res.status(404).json({ message: "Produsul cautat nu exista" });
   }
   res.json(product);
 });
@@ -94,7 +94,7 @@ app.get("/admin/reports", checkRole("Admin"), (req, res) => {
   res.json({ message: "Raport secret pentru Admin" });
 });
 
-// ------------------ PORNIRE SERVER ------------------
+// PORNIRE SERVER
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Serverul rulează pe http://localhost:${PORT}`);
